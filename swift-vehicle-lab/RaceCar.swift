@@ -23,11 +23,15 @@ class RaceCar: Car {
     
     
     override func accelerate() {
+        if speed < maxSpeed {
         speed += (0.2 * maxSpeed)
+        }
     }
     
     override func decelerate() {
+        if speed > 0.0 {
         speed -= (0.2 * maxSpeed)
+        }
     }
     
   
@@ -35,7 +39,7 @@ class RaceCar: Car {
         if speed != 0.0 {
             if heading >= 0.0 && heading <= 360.0 {
                 heading += 90.0
-                speed = speed / 4.0
+                speed = speed - (speed / 4.0)
             }
         }
 
@@ -45,7 +49,7 @@ class RaceCar: Car {
         if speed != 0.0 {
             if heading >= 0.0 && heading <= 360.0 {
                 heading -= 90.0
-                speed = speed / 4.0
+                speed = speed - (speed / 4.0)
             }
         }
         

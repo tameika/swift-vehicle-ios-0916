@@ -14,13 +14,15 @@ class Jet: Plane {
     
     override func climb() {
         if inFlight {
-        altitude += (1/5 * maxAltitude)
+            altitude += (1/5 * maxAltitude)
+            decelerate()
         }
     }
     
     override func dive() {
         if inFlight {
-        altitude -= (1/5 * maxAltitude)
+            altitude -= (1/5 * maxAltitude)
+            accelerate()
         }
     }
     
@@ -30,7 +32,7 @@ class Jet: Plane {
             self.speed = self.maxSpeed * 2
         }
     }
-
+    
 }
 
 

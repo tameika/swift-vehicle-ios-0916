@@ -59,7 +59,7 @@ class Plane: Vehicle {
         accelerate()
             
         } else if speed == 0.0 {
-            //inFlight = true
+            
             altitude -= (1/10 * maxAltitude)
             accelerate()
          }
@@ -76,7 +76,7 @@ class Plane: Vehicle {
     
     func bankLeft() {
         if inFlight {
-            heading -= 45.0
+            heading = heading - 45.0
             speed -= (1/10 * speed)
         }
     }
