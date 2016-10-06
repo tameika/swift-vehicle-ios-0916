@@ -33,8 +33,8 @@ class Plane: Vehicle {
     
     func takeoff() {
         if inFlight == false {
-            speed = (1/10 * maxSpeed)
-            altitude = (1/10 * maxAltitude)
+            speed = (0.1 * maxSpeed)
+            altitude = (0.1 * maxAltitude)
         }
     }
     
@@ -47,46 +47,61 @@ class Plane: Vehicle {
     
     func climb() {
         if inFlight {
-        altitude += (1/10 * maxAltitude)
+        altitude += (0.1 * maxAltitude)
         decelerate()
         }
     }
     
     
     func dive() {
-        if inFlight {
-        altitude -= (1/10 * maxAltitude)
-        accelerate()
-            
-        } else if speed == 0.0 {
-            
-            altitude -= (1/10 * maxAltitude)
+        
+        if altitude > 0.0 && speed > 0.0 {
+            altitude = altitude - (0.1 * maxAltitude)
             accelerate()
-         }
+            
+        } else if altitude > 0.0 && speed == 0.0 {
+            altitude = altitude - (0.1 * maxAltitude)
+            accelerate()
+            
+        } else if inFlight == false {
+            altitude = 0.0
+            
+        }
     }
     
     
     func bankRight() {
-        if inFlight {
+        if inFlight && heading >= 0.0 && heading <= 315.00 {
             heading += 45.0
-            speed -= (1/10 * speed)
+            speed = speed - (0.1 * speed)
+            
+        } else if inFlight && heading >= 360 {
+            heading = (heading + 45) - 360
+            speed = speed - (0.1 * speed)
+            
+        } else if inFlight == false {
+            heading = 0.0
         }
     }
+    
     
     
     func bankLeft() {
-        if inFlight {
+        if inFlight && heading >= 45 {
             heading = heading - 45.0
-            speed -= (1/10 * speed)
+            speed = speed - (0.1 * speed)
+            
+        } else if inFlight && heading < 45 {
+            heading = (-heading - 45.0) + 315.00
+            // heading = 315 - heading
+            speed = speed - (0.1 * speed)
+            
+        } else if inFlight == false {
+            heading = 0.0
         }
     }
-    
-    
+
 }
-
-
-
-
 
 
 

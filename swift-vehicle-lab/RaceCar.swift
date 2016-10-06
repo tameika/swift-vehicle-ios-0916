@@ -36,36 +36,67 @@ class RaceCar: Car {
     
   
     func driftRight() {
-        if speed != 0.0 {
-            if heading >= 0.0 && heading <= 360.0 {
-                heading += 90.0
-                speed = speed - (speed / 4.0)
-            }
-        }
-
-    }
-    
-    func driftLeft() {
-        if speed != 0.0 {
-            if heading >= 0.0 && heading <= 360.0 {
-                heading -= 90.0
-                speed = speed - (speed / 4.0)
-            }
+        if speed == 0.0 {
+            heading = 0.0
+        } else if heading >= 0.0 && heading <= 270.0 {
+            heading += 90.0
+            speed = speed * 0.75
+        } else if heading <= 360.0 {
+            heading = (heading + 90) - 360
+            speed = speed * 0.75
         }
         
     }
+
     
-    
+    func driftLeft() {
+        if speed == 0.0 {
+            heading = 0.0
+        } else if heading >= 90.0 {
+            heading = heading - 90.0
+            speed = speed * 0.75
+        } else if heading <= 270.0 {
+            heading = 360.0 - (90.0 - heading)
+            speed = speed * 0.75
+        }
+    }
+
     
     
 }
 
 
 
-
-
-
-
+//func turnRight() {
+//    if speed == 0.0 {
+//        heading = 0.0
+//    } else if heading >= 0.0 && heading <= 270.0 {
+//        heading += 90.0
+//        speed = speed / 2.0
+//    } else if heading <= 360.0 {
+//        heading = (heading + 90) - 360
+//        speed = speed / 2.0
+//    }
+//    
+//}
+//
+//
+//
+//func turnLeft() {
+//    if speed == 0.0 {
+//        heading = 0
+//    } else if heading >= 90.0 {
+//        heading = heading - 90.0
+//        speed = speed / 2.0
+//    } else if heading <= 270.0 {
+//        heading = 360.0 - (90.0 - heading)
+//        speed = speed / 2.0
+//    }
+//}
+//
+//
+//
+//
 
 
 
